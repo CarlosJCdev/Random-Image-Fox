@@ -1,3 +1,5 @@
+import { registerImage } from "./lazy.js";
+
 const maximun = 122;
 const minimum = 1;
 const random = () => Math.floor(Math.random() * (maximun - minimum)) + minimum
@@ -26,6 +28,8 @@ const addImage = () => {
         const newImage = createImageNode();
         //Despues lo agrego al DOM
         mountNode.append(newImage);
+        registerImage(newImage);
+        // Ademas de agregarla en el dom, que se registre en el lazy loading y la este monitoreando
     }
     //Le asigno al boton el evento que al dar click llame al evento addImage
 addButton.addEventListener("click", addImage);
